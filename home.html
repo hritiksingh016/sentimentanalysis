@@ -28,7 +28,31 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/plugins.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     
-
+    <style>
+   .myButton {
+	box-shadow: -1px 15px 14px -7px #276873;
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#24a0ed;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 50px #3d768a;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+    </style>
   
 </head>
 <body>
@@ -369,17 +393,27 @@
                                         </div>
 
                                         <form id="sdf" method=POST >
-                                            <input type=text name="name" value="" maxlength="100">
-                                            <input type=text id="review-ip" name="message" value="" maxlength="100">
-                                            <input type="submit" name="sd" value="Submit">
-                                            <div>
-                                                {% for re in revs1 %}
-                                                    <p><b></b>{{ re.name }}</p><br>
-                                                    <p>{{re.date_entered }} : </p><br>
-                                                    <p>{{re.review }}</p>
-                                                    <p><b> percentage rating : {{ re.percent }} </b></p>
-                                                {% endfor %}
-                                            </div>
+                                            <div class="form-group" style="width: 85%;">
+                                            <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
+                                        </div>
+                                        <div class="form-group" style="width: 85%;">
+                                            <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80"></textarea>
+                                        </div>
+                                            <button type="submit"  name="sd" class="myButton" >Submit</button>
+                                            
+                                        <div style="box-sizing: border-box; border: none; height: 320px; overflow-y: auto; width: 85%; padding: 10px ">
+                                            {% for re in revs1 %}
+                                                <div style="background-color: rgb(55, 75, 112); padding: 10px;">
+                                                    <p style="color: white; font-size: 21px;"><b>{{ re.name }}</b></p>
+                                                    <p style="size: 3px;">{{re.date_entered}}</p>
+                                                    <div style="text-indent: 15px;">
+                                                        <p style="font-size: 20px;">{{re.review }}</p>
+                                                        <p style="color: yellow;"><b> percentage rating : {{ "{0:.2%}".format(re.percent) }} </b></p>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                            {% endfor %}
+                                        </div>
                                         </form>
                                     </div>
                                 </div>
@@ -472,21 +506,25 @@
                                             <a  class="redbtn">Write Review</a>
                                         </div>
                                         <form id="ch" method=POST>
-                                            <div class="form-group">
+                                            <div class="form-group" style="width: 85%;">
                                                 <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
                                             </div>
-                                            <div class="form-group">
-                                                <input type=text id="review-ip-ch" name="message" value="" maxlength="100" placeholder="Write a review">
+                                            <div class="form-group" style="width: 85%;">
+                                                <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80"></textarea>
                                             </div>
-                                                <button type="submit"  name="ch" class="btn btn-primary">Submit</button>
-                                            <div>
+                                                <button type="submit"  name="ch" class="myButton" >Submit</button>
+                                                
+                                            <div style="box-sizing: border-box; border: none; height: 320px; overflow-y: auto; width: 85%; padding: 10px ">
                                                 {% for re in revs2 %}
-                                                    <p style="color: white;"><b>{{ re.name }}</b></p>
-                                                    <p style="size: 3px;">{{re.date_entered }} : </p><br>
-                                                    <div style="text-indent: 15px;">
-                                                        <p>{{re.review }}</p>
-                                                        <p style="color: yellow;"><b> percentage rating : {{ re.percent * 100 }}% </b></p>
+                                                    <div style="background-color: rgb(55, 75, 112); padding: 10px;">
+                                                        <p style="color: white; font-size: 21px;"><b>{{ re.name }}</b></p>
+                                                        <p style="size: 3px;">{{re.date_entered}}</p>
+                                                        <div style="text-indent: 15px;">
+                                                            <p style="font-size: 20px;">{{re.review }}</p>
+                                                            <p style="color: yellow;"><b> percentage rating : {{ "{0:.2%}".format(re.percent) }} </b></p>
+                                                        </div>
                                                     </div>
+                                                    <hr>
                                                 {% endfor %}
                                             </div>
                                         </form>
@@ -584,17 +622,25 @@
 							            	<a href="#" class="redbtn">Write Review</a>
                                         </div>
                                         <form id="av" method=POST>
-                                            <input type=text id="review-ip" name="name" value="" maxlength="100">
-                                            <input type=text id="review-ip-av" name="message" value="" maxlength="100">
-                                            <input type="submit" name="av"  value="Submit">
-                                            <div>
+                                            <div class="form-group" style="width: 85%;">
+                                                <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
+                                            </div>
+                                            <div class="form-group" style="width: 85%;">
+                                                <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80"></textarea>
+                                            </div>
+                                                <button type="submit"  name="av" class="myButton" >Submit</button>
+                                                
+                                            <div style="box-sizing: border-box; border: none; height: 320px; overflow-y: auto; width: 85%; padding: 10px ">
                                                 {% for re in revs3 %}
-                                                    <p><strong>{{ re.name }}</strong></p><br>
-                                                    <p>{{re.date_entered }} : </p><br>
-                                                    <p>{{re.review }}</p>
-                                                    <p><b> percentage rating : {{ re.percent }} </b></p>
-                                                    <br>
-                                                    <br>
+                                                    <div style="background-color: rgb(55, 75, 112); padding: 10px;">
+                                                        <p style="color: white; font-size: 21px;"><b>{{ re.name }}</b></p>
+                                                        <p style="size: 3px;">{{re.date_entered}}</p>
+                                                        <div style="text-indent: 15px;">
+                                                            <p style="font-size: 20px;">{{re.review }}</p>
+                                                            <p style="color: yellow;"><b> percentage rating : {{ "{0:.2%}".format(re.percent) }} </b></p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
                                                 {% endfor %}
                                             </div>
                                         </form>
@@ -691,17 +737,25 @@
 							            	<a href="#" class="redbtn">Write Review</a>
                                         </div>
                                         <form id="hp" method=POST>
-                                            <input type=text id="review-ip" name="name" value="" maxlength="100">
-                                            <input type=text id="review-ip-hp" name="message" value="" maxlength="100">
-                                            <input type="submit" name="hp"  value="Submit">
-                                            <div>
+                                            <div class="form-group" style="width: 85%;">
+                                                <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
+                                            </div>
+                                            <div class="form-group" style="width: 85%;">
+                                                <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80"></textarea>
+                                            </div>
+                                                <button type="submit"  name="hp" class="myButton" >Submit</button>
+                                                
+                                            <div style="box-sizing: border-box; border: none; height: 320px; overflow-y: auto; width: 85%; padding: 10px ">
                                                 {% for re in revs4 %}
-                                                    <p><strong>{{ re.name }}</strong></p><br>
-                                                    <p>{{re.date_entered }} : </p><br>
-                                                    <p>{{re.review }}</p>
-                                                    <p><b> percentage rating : {{ re.percent }} </b></p>
-                                                    <br>
-                                                    <br>
+                                                    <div style="background-color: rgb(55, 75, 112); padding: 10px;">
+                                                        <p style="color: white; font-size: 21px;"><b>{{ re.name }}</b></p>
+                                                        <p style="size: 3px;">{{re.date_entered}}</p>
+                                                        <div style="text-indent: 15px;">
+                                                            <p style="font-size: 20px;">{{re.review }}</p>
+                                                            <p style="color: yellow;"><b> percentage rating : {{ "{0:.2%}".format(re.percent) }} </b></p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
                                                 {% endfor %}
                                             </div>
                                         </form>
@@ -797,19 +851,27 @@
 							            	<a href="#" class="redbtn">Write Review</a>
                                         </div>
                                         <form id="laxmi" method=POST>
-                                            <input type=text  name="name" value="" maxlength="100">
-                                            <input type=text id="review-ip-lx" name="message" value="" maxlength="100">
-                                            <input type="submit" name="laxmii" value="Submit">
-                                            <div>
-                                                {% for re in revs5 %}
-                                                    <p><strong>{{ re.name }}</strong></p><br>
-                                                    <p>{{re.date_entered }} : </p><br>
-                                                    <p>{{re.review }}</p>
-                                                    <p><b> percentage rating : {{ re.percent }} </b></p>
-                                                    <br>
-                                                    <br>
-                                                {% endfor %}
-                                            </div>
+                                            <div class="form-group" style="width: 85%;">
+                                            <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
+                                        </div>
+                                        <div class="form-group" style="width: 85%;">
+                                            <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80"></textarea>
+                                        </div>
+                                            <button type="submit"  name="laxmii" class="myButton" >Submit</button>
+                                            
+                                        <div style="box-sizing: border-box; border: none; height: 320px; overflow-y: auto; width: 85%; padding: 10px ">
+                                            {% for re in revs5 %}
+                                                <div style="background-color: rgb(55, 75, 112); padding: 10px;">
+                                                    <p style="color: white; font-size: 21px;"><b>{{ re.name }}</b></p>
+                                                    <p style="size: 3px;">{{re.date_entered}}</p>
+                                                    <div style="text-indent: 15px;">
+                                                        <p style="font-size: 20px;">{{re.review }}</p>
+                                                        <p style="color: yellow;"><b> percentage rating : {{ "{0:.2%}".format(re.percent) }} </b></p>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                            {% endfor %}
+                                        </div>
                                         </form>
                                         <h2><span id="rev-lx"></span></h2>
 						            </div>
@@ -1010,22 +1072,6 @@
 	</div>
 </footer>
 
-<script>
-    $("#sdf").submit(function(event){
-        event.preventDefault();
-        $.ajax({
-            data: {
-                message: $("#review-ip").val(),
-            },
-            type : 'POST',
-            url : '/process'
-        })
-        .done(function(data){
-            $("#rev").text(data["response"])
-        });
-    });
-    
-</script>
 <!-- <script>
     function check()
     {
