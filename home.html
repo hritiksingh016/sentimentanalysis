@@ -27,7 +27,9 @@
     <!-- CSS files -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/plugins.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
+  
 </head>
 <body>
 <!--preloading-->
@@ -372,12 +374,10 @@
                                             <input type="submit" name="sd" value="Submit">
                                             <div>
                                                 {% for re in revs1 %}
-                                                    <p><strong>{{ re.name }}</strong></p><br>
+                                                    <p><b></b>{{ re.name }}</p><br>
                                                     <p>{{re.date_entered }} : </p><br>
                                                     <p>{{re.review }}</p>
                                                     <p><b> percentage rating : {{ re.percent }} </b></p>
-                                                    <br>
-                                                    <br>
                                                 {% endfor %}
                                             </div>
                                         </form>
@@ -472,17 +472,21 @@
                                             <a  class="redbtn">Write Review</a>
                                         </div>
                                         <form id="ch" method=POST>
-                                            <input type=text id="review-ip" name="name" value="" maxlength="100">
-                                            <input type=text id="review-ip-ch" name="message" value="" maxlength="100">
-                                            <input type="submit"  name="ch" value="Submit">
+                                            <div class="form-group">
+                                                <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type=text id="review-ip-ch" name="message" value="" maxlength="100" placeholder="Write a review">
+                                            </div>
+                                                <button type="submit"  name="ch" class="btn btn-primary">Submit</button>
                                             <div>
                                                 {% for re in revs2 %}
-                                                    <p><strong>{{ re.name }}</strong></p><br>
-                                                    <p>{{re.date_entered }} : </p><br>
-                                                    <p>{{re.review }}</p>
-                                                    <p><b> percentage rating : {{ re.percent }} </b></p>
-                                                    <br>
-                                                    <br>
+                                                    <p style="color: white;"><b>{{ re.name }}</b></p>
+                                                    <p style="size: 3px;">{{re.date_entered }} : </p><br>
+                                                    <div style="text-indent: 15px;">
+                                                        <p>{{re.review }}</p>
+                                                        <p style="color: yellow;"><b> percentage rating : {{ re.percent * 100 }}% </b></p>
+                                                    </div>
                                                 {% endfor %}
                                             </div>
                                         </form>
@@ -984,7 +988,7 @@
                         <div id="tab21" class="tab">
                             <div class="row">
                                 <!-- content -->
-                                Sentiment based movie rating system is an online system that automatically allows users to post reviews and stores them to rate movies based on user sentiments. The system analyzes the stored data to check for user sentiments associated with each comment. The system gathers all the comments for a particular movie and then calculates an average rating to score it. This score is generated for every movie in the system. Emotions of a user based on review analysis is shown. It automatically sorts good words and bad words from the review written by the user and rates the movie accordingly.
+                                <p style="color: white;">Sentiment based movie rating system is an online system that automatically allows users to post reviews and stores them to rate movies based on user sentiments. The system analyzes the stored data to check for user sentiments associated with each comment. The system gathers all the comments for a particular movie and then calculates an average rating to score it. This score is generated for every movie in the system. Emotions of a user based on review analysis is shown. It automatically sorts good words and bad words from the review written by the user and rates the movie accordingly.</p>
                             </div>
                         </div>
                         <div id="tab22" class="tab active">
@@ -1043,6 +1047,9 @@
 <script src="{{ url_for('static', filename='js/plugins.js')}}"></script>
 <script src="{{ url_for('static', filename='js/plugins2.js')}}"></script>
 <script src="{{ url_for('static', filename='js/custom.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </body>
 
 <!-- moviesingle11:03-->
