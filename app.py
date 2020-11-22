@@ -129,7 +129,7 @@ def main():
         if 'hp' in request.form:
             hp_rev(request)
             sdf = harry.query.all()
-            return render_template("home.html", revs2=sdf)
+            return render_template("home.html", revs4=sdf)
         if 'av' in request.form:
             avengers_rev(request)
             sdf = avengers.query.all()
@@ -137,7 +137,7 @@ def main():
         if 'ch' in request.form:
             chhalaang_rev(request)
             sdf = chhalaang.query.all()
-            return render_template("home.html", revs4=sdf)
+            return render_template("home.html", revs2=sdf)
         if 'laxmii' in request.form:
             laxmii_rev(request)
             sdf = laxmii.query.all()
