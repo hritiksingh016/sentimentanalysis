@@ -29,6 +29,18 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     
     <style>
+
+   input[type=text] {
+  width: 50%;
+  -webkit-transition: width .35s ease-in-out;
+  transition: width .35s ease-in-out;
+}
+input[type=text]:hover {
+  width: 85%;
+}
+input[type=text]:focus {
+  width: 85%;
+}
    .myButton {
 	box-shadow: -1px 15px 14px -7px #276873;
 	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
@@ -393,15 +405,15 @@
                                         </div>
 
                                         <form id="sdf" method=POST >
-                                            <div class="form-group" style="width: 85%;">
+                                            <div class="form-group">
                                             <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
                                         </div>
-                                        <div class="form-group" style="width: 85%;">
-                                            <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80"></textarea>
-                                        </div>
-                                            <button type="submit"  name="sd" class="myButton" >Submit</button>
+                                        <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80" style="height:100px; width:85%; margin-bottom:10px"></textarea>
+                                        <!-- </div> -->
+                                            <button type="submit"  name="sd" class="myButton" style="margin-bottom:15px;" >Submit</button>
+                                            <br>
                                             
-                                        <div style="box-sizing: border-box; border: none; height: 320px; overflow-y: auto; width: 85%; padding: 10px ">
+                                        <div style="box-sizing: border-box; border: none; height: 270px; overflow-y: auto; width: 85%; padding: 10px; box-shadow: -1px 15px 14px -7px #276873;">
                                             {% for re in revs1 %}
                                                 <div style="background-color: rgb(55, 75, 112); padding: 10px;">
                                                     <p style="color: white; font-size: 21px;"><b>{{ re.name }}</b></p>
@@ -424,6 +436,9 @@
             </div>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
     <!-- Chhalaang -->
     <div class="container2" id="chhalaang">
 		<div class="row ipad-width2">
@@ -509,12 +524,12 @@
                                             <div class="form-group" style="width: 85%;">
                                                 <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
                                             </div>
-                                            <div class="form-group" style="width: 85%;">
-                                                <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80"></textarea>
-                                            </div>
-                                                <button type="submit"  name="ch" class="myButton" >Submit</button>
+                                            <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80" style="height:100px; width:85%; margin-bottom:10px"></textarea>
+                                            <!-- </div> -->
+                                                <button type="submit"  name="ch" class="myButton" style="margin-bottom:15px;" >Submit</button>
+                                                <br>
                                                 
-                                            <div style="box-sizing: border-box; border: none; height: 320px; overflow-y: auto; width: 85%; padding: 10px ">
+                                            <div style="box-sizing: border-box; border: none; height: 270px; overflow-y: auto; width: 85%; padding: 10px ">
                                                 {% for re in revs2 %}
                                                     <div style="background-color: rgb(55, 75, 112); padding: 10px;">
                                                         <p style="color: white; font-size: 21px;"><b>{{ re.name }}</b></p>
@@ -538,6 +553,9 @@
 			</div>
 		</div>
     </div>
+    <br>
+    <br>
+    <br>
 
     <!-- avengers -->
     <div class="container3" id="avengers">
@@ -622,19 +640,21 @@
 							            	<a href="#" class="redbtn">Write Review</a>
                                         </div>
                                         <form id="av" method=POST>
-                                            <div class="form-group" style="width: 85%;">
+                                            <div class="form-group">
                                                 <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
                                             </div>
-                                            <div class="form-group" style="width: 85%;">
-                                                <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80"></textarea>
-                                            </div>
-                                                <button type="submit"  name="av" class="myButton" >Submit</button>
-                                                
-                                            <div style="box-sizing: border-box; border: none; height: 320px; overflow-y: auto; width: 85%; padding: 10px ">
+                                            <!-- <div style="width: 85%; color:black; overflow-y: scroll; height:150px;
+                                            "> -->
+                                                <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80" style="height:100px; width:85%; margin-bottom:10px"></textarea>
+                                            <!-- </div> -->
+                                                <button type="submit"  name="av" class="myButton" style="margin-bottom:15px;" >Submit</button>
+                                                <br>
+                                        </form>
+                                        <div style="height: 270px; overflow-y: auto; width: 85%; padding: 10px ">
                                                 {% for re in revs3 %}
                                                     <div style="background-color: rgb(55, 75, 112); padding: 10px;">
                                                         <p style="color: white; font-size: 21px;"><b>{{ re.name }}</b></p>
-                                                        <p style="size: 3px;">{{re.date_entered}}</p>
+                                                        <p>{{re.date_entered}}</p>
                                                         <div style="text-indent: 15px;">
                                                             <p style="font-size: 20px;">{{re.review }}</p>
                                                             <p style="color: yellow;"><b> percentage rating : {{ "{0:.2%}".format(re.percent) }} </b></p>
@@ -643,7 +663,6 @@
                                                     <hr>
                                                 {% endfor %}
                                             </div>
-                                        </form>
                                         <h2><span id="rev-av"></span></h2>
 						            </div>
 						        </div>
@@ -654,6 +673,9 @@
 			</div>
 		</div>
     </div>
+    <br>
+    <br>
+    <br>
     <!-- harry potter -->
 	<div class="container4" id="harry">
 		<div class="row ipad-width2">
@@ -740,12 +762,12 @@
                                             <div class="form-group" style="width: 85%;">
                                                 <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
                                             </div>
-                                            <div class="form-group" style="width: 85%;">
-                                                <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80"></textarea>
-                                            </div>
-                                                <button type="submit"  name="hp" class="myButton" >Submit</button>
+                                            <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80" style="height:100px; width:85%; margin-bottom:10px"></textarea>
+                                            <!-- </div> -->
+                                                <button type="submit"  name="hp" class="myButton" style="margin-bottom:15px;" >Submit</button>
+                                                <br>
                                                 
-                                            <div style="box-sizing: border-box; border: none; height: 320px; overflow-y: auto; width: 85%; padding: 10px ">
+                                            <div style="box-sizing: border-box; border: none; height: 270px; overflow-y: auto; width: 85%; padding: 10px ">
                                                 {% for re in revs4 %}
                                                     <div style="background-color: rgb(55, 75, 112); padding: 10px;">
                                                         <p style="color: white; font-size: 21px;"><b>{{ re.name }}</b></p>
@@ -769,6 +791,9 @@
 			</div>
 		</div>
     </div>
+    <br>
+    <br>
+    <br>
     <!-- Laxmii -->
     <div class="container5" id="laxmi">
 		<div class="row ipad-width2">
@@ -854,12 +879,12 @@
                                             <div class="form-group" style="width: 85%;">
                                             <input type=text id="review-ip" name="name" value="" maxlength="100" placeholder="Your name">
                                         </div>
-                                        <div class="form-group" style="width: 85%;">
-                                            <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80"></textarea>
-                                        </div>
-                                            <button type="submit"  name="laxmii" class="myButton" >Submit</button>
+                                        <textarea  id="review-ip-ch" name="message" placeholder="Write a review"rows="6" cols="80" style="height:100px; width:85%; margin-bottom:10px"></textarea>
+                                            <!-- </div> -->
+                                                <button type="submit"  name="laxmii" class="myButton" style="margin-bottom:15px;" >Submit</button>
+                                                <br>
                                             
-                                        <div style="box-sizing: border-box; border: none; height: 320px; overflow-y: auto; width: 85%; padding: 10px ">
+                                        <div style="box-sizing: border-box; border: none; height: 270px; overflow-y: auto; width: 85%; padding: 10px ">
                                             {% for re in revs5 %}
                                                 <div style="background-color: rgb(55, 75, 112); padding: 10px;">
                                                     <p style="color: white; font-size: 21px;"><b>{{ re.name }}</b></p>
@@ -883,6 +908,9 @@
 			</div>
 		</div>
     </div>
+    <br>
+    <br>
+    <br>
     <!-- blackwidow -->
     <div class="container6" id="bw">
         <div class="row ipad-width2">
